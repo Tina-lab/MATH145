@@ -1,0 +1,266 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\title{Assignment 6}
+\author{Zekun Wang}
+\date{October 2019}
+
+\begin{document}
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[theorem]
+
+\maketitle
+
+\section{A6P3}
+It is not hard to check that $\mathbb{Z}[i]$, the set of Gaussian integers, forms a commutative ring. So we can carry all our previous work done on $\mathbb{Z}$ to $\mathbb{Z}[i]$, including the concept of division and its properties.  But we can not get those relying on the concept of order for free, since in defining order we have used some axioms for $\mathbb{N}$. One such important result is the division algorithm, but fortunately this also holds in $\mathbb{Z}[i]$.
+
+\begin{definition}
+For $a,b \in \mathbb{Z}[i]$, we write $a \sim b$, if $a$ equals $b$ times a unit.
+\end{definition}
+\begin{definition}
+A prime $p$ in $\mathbb{Z}[i]$ is a non unit element such that $d\mid p$ implies $d$ is a unit or $d \sim p$.
+\end{definition}
+From the definition we immediately have for any two primes $p_1$ and $p_2$, $p_1 \mid p_2$ implies $p_1 \sim p_2$.
+\begin{theorem}[Division Algorithm]
+For all $a,b \in \mathbb{Z}[i]$ with $b \not = 0$, there exist Gaussian integers $q$ and $r$ such that $a = qb+r$, where $\vert r \vert < \vert b \vert.$
+\end{theorem}
+
+\begin{proof}
+Since $b \not = 0$, there exists $q' \in \mathbb{C}$ such that $a = q'b$. If we round $\operatorname{Re}(q')$ and $\operatorname{Im}(q')$ to their nearst integers (not necessary unique), we get $q \in \mathbb{Z}[i]$. Then we have 
+$$\vert r \vert = \vert a - qb \vert  = \vert q - q' \vert \vert b \vert \leq \vert \frac{1}{2}+\frac{1}{2}i\vert\vert b\vert = \frac{1}{2}\vert b \vert < \vert b \vert.$$
+\end{proof}
+
+Now we can use the Euclid algorithm to find the GCD's of two Gaussian integers.
+
+\begin{example}
+The GCD's for $7+11i, 3+5i$ is $\pm (1+i)$ and $\pm (1-i)$. 
+\end{example}
+
+\begin{proof}
+$$
+\begin{aligned} & \gcd (7+11 i, 3+5 i) \\=& \operatorname{gcd}(1+i, 3+5 i) \\=& \operatorname{gcd}(1+i, 2 i)  \\ =&\operatorname{gcd}(1+i, 0) \\ =&\{\pm(1+i),\pm (1-i)\}. \end{aligned}$$
+\end{proof}
+
+\begin{definition}
+Two non-zero Gaussian integers are said to be coprime if they share no common divisor other than the units in $\mathbb{Z}[i]$, namely $\pm 1, \pm i$.
+\end{definition}
+
+\begin{theorem}
+For two coprime Gaussian integers $a$ and $b$, $ax+by = 1$ for some $x,y\in \mathbb{Z}[i].$
+\end{theorem}
+
+\begin{proof}
+Let $S=\{ax+by\mid x,y\in \mathbb{Z}[i]\}$. Suppose $m$ is an element in $S$ with smallest non-zero norm. Then for any $n \in S'$, $m \mid n$, or by the division algorithm we will have $0<|r|<|n|$ which contradicts the definition of $S$. Since $a \in S$ and $b \in S$, $m\mid a$ and $m\mid b$. Thus $m$ is a unit and by denifiton of $S$, $m = ax+by$. Finally multiply $x$ and $y$ with $\pm 1$ or $\pm i$ and we get $ax'+by' = 1$.
+\end{proof}
+
+Now with Theorem 1.2 we immediately have the Gaussian integer version of A5P2.
+\begin{theorem}
+If $a, b$ are coprime Gaussian integers, then for any $c \in \mathbb{Z}[i]$, $a\mid b\cdot c$ implies $a\mid c$.
+\end{theorem}
+
+\begin{corollary}
+For prime numbers $p,p_1, \ldots, p_n$, $a\mid p_1 \cdots p_n$ implies $p \sim p_i$.
+\end{corollary}
+\begin{proof}
+If $p$ divides one from $p_1$ to $p_{n-1}$, then we are done. If not, applying theorem 1.3 $(n-1)$ times gives us $p \mid p_n$, hence $p \sim p_n$.
+\end{proof}
+
+\begin{theorem}[Unique Factorization]
+If $z \in \mathbb{Z}[i]$, the prime factorization is unique up to reordering and $\sim$.
+\end{theorem}
+
+\begin{proof}
+Suppose we have
+$$z = p_1\cdots p_n = q_1\cdots p_m.$$
+We need to show $p_i \sim q_i$ and $n =m$. First apply  1.3.1 on $p_1$ and $q_1$ through $q_m$, then $p_1 \sim q_i$, say $q_1$. Then we can cancel out $p_1$ and $q_1$ from each side (possibly with an extra unit factor on one side). This gives us $p_2\cdots p_n=q_2\cdots q_m$. Repeating the above process gives us the desired result. If $m \neq n$, we will have a unit equals a product of primes, a contradiction. Thus $m =n$ and by an inductive argument we will have $p_i \sim q_i$ for each $i = 1, 2, \ldots, n.$
+\end{proof}
+
+\pagebreak
+\section{A6P4}
+We first compute the powers of 3, and then use them to compute the squares by $3^{2n}=(3^n)^2.$ and $n^2=(-n)^2$
+\begin{table}[h]
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$n$   & 0       & 1 & 2       & 3  & 4       & 5 & 6        & 7  & 8        \\ \hline
+$3^n$ & 1       & 3 & 9       & 10 & 13      & 5 & 15       & 11 & 16       \\ \hline
+$m^2$ & 1       &   & 9       &    & 13      &   & 15       &    & 16       \\ \hline
+$m$   & $3^0=1$ &   & $3^1=3$ &    & $3^2=9$ &   & $3^3=10$ &    & $3^4=13$ \\ \hline
+$-m$  & 16      &   & 14      &    & 8       &   & 7        &    & 4        \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+$n$   & 9  & 10      & 11 & 12       & 13 & 14       & 15 & 16       \\ \hline
+$3^n$ & 14 & 8       & 7  & 4        & 12 & 2        & 6  & 1        \\ \hline
+$m^2$ &    & 8       &    & 4        &    & 2        &    & 1        \\ \hline
+$m$   &    & $3^5=5$ &    & $3^6=15$ &    & $3^7=11$ &    & $3^8=16$ \\ \hline
+$-m$  &    & 12      &    & 2        &    & 6        &    & 1        \\ \hline
+\end{tabular}
+\end{table}
+\def\lc{\left\lceil}   
+\def\rc{\right\rceil}
+
+\begin{theorem}
+For $n>2$, $\mathbb{Z}^*_n$ contains exactly $\frac{\vert \mathbb{Z}^*_n \vert}{2}$ perferct squares.
+\end{theorem}
+\begin{proof}
+Since there are no zero divisors in $\mathbb{Z}^*_n$, $x^2 = y^2 \Leftrightarrow x=\pm y$; and $x \not =-x$, or we will have $2x = 0$, a contradiction. Note that if $x$ is a unit then $-x$ is also a unit whose inverse is $-(x)^{-1}$, so $\mathbb{Z}^*_n$ is in the form $\{ \pm z_1, \pm z_2,\ldots \},$ where $z_i^2 \not = z_j^2, \text{for} i \not = j$. Thus the perfect squares in $\mathbb{Z}^*_n$ is $\{z_1^2, z_2^2, \ldots\}$ and contains half the elements of $\mathbb{Z}^*_n.$
+\end{proof}
+
+\begin{example}
+Using the above table, we can solve the equations
+\end{example}
+\begin{gather}
+5x=7 \Rightarrow 3^5x=3^{11} \Rightarrow x=3^6=15,  \\
+x^2=13 \Rightarrow x = 8 \text{ or } 9, \\ 
+7x^3=5 \Rightarrow 3^{11}x^3=3^5 \Rightarrow x^3 = 3^{-6} \Rightarrow x = 3^{-2} = 2. \\
+\end{gather}
+
+Now we generalize the method to $Z^*_n.$
+\begin{theorem}
+The multiplicative group of the perfect squares in $Z^*_n$ is cyclic.
+\end{theorem}
+
+
+\section{A6P5}
+We describe a general method for solving quadratic equations in $\mathbb{Z}_n$. 
+
+First we need to compute the squares of every number (or a half of them since $n^2 = (-n)^2$) in $\mathbb{Z}_n$ and make a table such from which we can read the square roots---if they exist---of every element in $\mathbb{Z}_n$.
+
+Next, because
+\begin{align}
+    &ax^2+bx+c = 0\\
+    &\Leftrightarrow 4a^2x^2+4abx+4ac = 0\\
+    &\Leftrightarrow (2ax+b)^2
+    =b^2-4ac,
+\end{align}
+we reduce (5) to 
+\begin{equation}2ax = -b \pm \sqrt{b^2-4ac}.\end{equation}
+Note here $\sqrt{b^2-4ac}$ may not exist, if so (5) has no solution; and sometimes $\sqrt{b^2-4ac}$ is not unique. Now we are left to solve a linear equation in $\mathbb{Z}_n$. From A5 we now $x \in \mathbb{Z}_n$ has multplicative inverse if and only if $x$ and $n$ are coprime, and if $x^{-1}$ exists we can find it by Euclid algorithm. Thus if $2a$ is not coprime with $n$, our equation has no solution; else multiplying both sides of (8) with $(2a)^{-1}$ we then have the solution
+\begin{equation}
+    x = (2a)^{-1} (-b \pm \sqrt{b^2-4ac}).
+\end{equation}
+
+\begin{example}
+
+\end{example}
+
+% initial work
+% \begin{definition}[division]
+% For all $a, b\in \mathbb{Z}[i]$, we say $a\mid b$ if there exists $c \in \mathbb{Z}[i]$ such that $c\cdot a = b$.
+% \end{definition}
+% \begin{definition}[GCD]
+% An element $z$ in $\mathbb{Z}[i]$ is said to be the GCD of $a,b$ in $\mathbb{Z}[i]$ if $z$ is the largest (in the sense of norm) common divisor of $a$ and $b$.
+% \end{definition}
+
+% \begin{lemma}
+% If $ a ,b \in \mathbb{Z}[i]$, then $a+b \in \mathbb{Z}[i]$ and $a\cdot b \in \mathbb{Z}[i]$.
+% \end{lemma}
+
+% \begin{proof}
+% Let $a = x+yi$, $b = u+vi$, then $a+b = (x+u)+(y+v)i\in \mathbb{Z}[i]$ and $a\cdot b = (xu-yv)+(xv+uy)i \in \mathbb{Z}[i]$.
+% \end{proof}
+
+% \begin{lemma}
+% $\forall a,b \in \mathbb{Z}[i]$, $a\mid b$ \Leftrightarrow $a \mid  bi$.
+% \end{lemma}
+
+% \begin{proof}
+% $ca=b \Rightarrow (ci)a=ib$; \ $ca=bi \Rightarrow (-ci)a = b. $
+% \end{proof}
+
+% \begin{lemma}
+% For numbers in $\mathbb{Z}[i]$, $(d \mid a \land d \mid b)\Leftrightarrow (d\mid a \land d \mid za+b). $
+% \end{lemma}
+% \begin{proof}
+% $\Rightarrow$. $a = z_1d$ and $b = z_2d$ $\Rightarrow$ $za+b = (zz_1+z_2)d$.
+
+% $\Leftarrow$. Using the above result, $(d \mid a \land d \mid za+b) \Rightarrow (d \mid a \land d \mid (za+b)+(-za)).$
+% \end{proof}
+
+% \begin{corollary}
+% For gaussian integers $a$ and $b$, $\gcd(a,b) = gcd (a,za+b)$, where $\gcd$ denotes the set of GCD's of $a,b$.
+% \end{corollary}
+
+% \begin{example}
+% The GCD's for $7+11i, 3+5i$ is $\pm (1+i)$ and $\pm (1-i)$. 
+% \end{example}
+
+% \begin{proof}
+% $$
+% \begin{aligned} & \gcd (7+11 i, 3+5 i) \\=& \operatorname{gcd}(1+i, 3+5 i) \\=& \operatorname{gcd}(1+i, 2 i) \\=& \operatorname{gcd}(1+i, 2) \\ =&\operatorname{gcd}(1+i, 0) \\ =&\{\pm(1+i),\pm (1-i)\}. \end{aligned}$$
+% \end{proof}
+
+% \begin{conjecture}[division algorithm]
+% For gaussian integers $a,b$, $a = qb + r$ where $q,r \in \mathbb{Z} [i]$ and $|r|< |b|. $
+% \end{conjecture}
+
+% \begin{theorem}
+% If $d$ is a GCD of $a,b \in \mathbb{Z}[i]$, then there exist $x,y \in \mathbb{Z}[i]$ such that $d = xa + yb$.
+% \end{theorem}
+% \begin{proof}
+% By the division algorithm, we have
+% $$
+% \begin{array}{l}{a=q_0 {b}+{r}_{0}} \\ {b=q_1 {r_0}+{r}_{1}} \\ {r_{0}=q_2 r_{1}+r_{2}} \\ {\quad \quad \vdots} \\ {r_{n}=q_{n+2} \mathrm{r}_{n+1}+0},\end{array}
+% $$since $r_i$ strictly decreases.
+
+% So $r_{n+1} = x'a+y'b$, for some $x', y' \in \mathbb{Z}[i]$. But $d=\pm r_{n+1}$ or $d= \pm r_{n+1}i$, in either case we have the desrired result.
+% \end{proof}
+
+% \begin{theorem}
+% For all gaussian integers $a,b$ and $c$, if $1 \in gcd(a,b)$, then $a \mid bc \Rightarrow a\mid c$.
+% \end{theorem}
+
+% \begin{proof}
+% The proof is the same as A5P2.
+% \end{proof}
+% \begin{definition}
+% If a non-unit element $p \in \mathbb{Z}[i]$ has no other divisor other $\pm 1$ and $\pm i$, then $p$ is a prime in $\mathbb{Z}[i]$.
+% \end{definition}
+
+% \begin{lemma}
+% If $p|p_1p_2\cdots p_n$, where the $p$'s are all primes, then $ p \sim  p_i$ ($p=\pm p_i \text{or}\  p = \pm i_p_i$).
+% \end{lemma}
+% \begin{proof}
+% If $p \sim  p_i$ for $i = 1,2, \ldots, n-1$, then we are done. Else $1 \in \gcd(p,p_1)$ and we apply Theorem 1.6 and obtain $$p|p_2p_3\cdots p_n.$$ If $p\not \sim  p_2, p_3,\ldots,p_{n-1}$, repeat the above process we eventually will have $p|p_n$, but $p$ and $p_n$ are both primes so we have $p\sim  p_n$.
+% \end{proof}
+% \begin{theorem}
+% The prime factorization in $\mathbb{Z}[i]$ is unique if we regard factors that differs by $\pm 1,\pm i$ to be same.
+% \end{theorem}
+
+% \begin{proof}
+% Suppose $z \in \mathbb{Z}[i]$ has two prime factorizations,
+% \begin{equation}
+% z = p_1p_2\cdots p_n, \end{equation}
+% and 
+% \begin{equation}
+% z = p'_1p'_2\cdots p'_m,
+% \end{equation}
+% where $p_i,p'_i$ are prime. %and $p_i \leq p_{i+1}.$
+
+% Note that $p_1|z$, so we can apply 1.7 and get $p_1\sim p'_i$. Then we have
+% $$
+% z/p_1 = p_2\cdots p_n, $$
+% and 
+% $$
+% z /p_1\sim z/p_i'= p'_1p'_2\cdots p'_{i-1}p'_{i+1} p'_m.
+% $$
+
+% Applying the above process repeatedly will eventually gives us $p_i\cdots p_n \sim  p_j'$ if $m<n$, $p_n \sim p_ip_j\cdots$ if $m>n$, both of which lead to contradiction. So $m=n$.%, and in this case, we have for each $p_i$ in (1), there is a unique elements 
+% %gives us $p_2$ = $p'_j$ and so
+% This is enough to say the prime factorization is unieuq. Since for each $p_i$ in (1) there's at least one element $p'_j$ in (2) such that $p_i \sim p'_j$ so if there are $k$ $p_i$ in (1) then there is at least $k$ $p_i$ in (2), but we have $m$ is not greater than $n$ so there's exactly $k$ $p_i$ in (2).
+% \end{proof}
+
+
+\end{document}
