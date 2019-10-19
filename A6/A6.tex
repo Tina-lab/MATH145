@@ -21,21 +21,39 @@
 \maketitle
 
 \section{A6P3}
-It is not hard to check that $\mathbb{Z}[i]$, the set of Gaussian integers, forms a commutative ring. So we can carry all our previous work done on $\mathbb{Z}$ to $\mathbb{Z}[i]$, including the concept of division and its properties.  But we can not get those relying on the concept of order for free, since in defining order we have used some axioms for $\mathbb{N}$. One such important result is the division algorithm, but fortunately this also holds in $\mathbb{Z}[i]$.
+
+\textbf{investigate the number system $\mathbb{Z}[i]$.}
+
+It is not hard to check that $\mathbb{Z}[i]$, the set of Gaussian integers, forms a commutative ring.(This is because it satisfies all the ring axioms plus the commutativity of multiplication.) In particular, the additive identity is (0 + 0i), and the multiplicative identity is (1 + 0i). Therefore $\mathbb{Z}[i]$ should possess some similar properties with $\mathbb{Z}$, which is also a commutative ring. Hence we can carry all our previous work done on $\mathbb{Z}$ to $\mathbb{Z}[i]$, including the concept of division and its properties. 
+
+\begin{definition}
+Divide is defined as: for all $x y$ : $\mathbb{Z}[i]$, exists z : $\mathbb{Z}[i]$, y = z * x.
+\end{definition}
+
+\begin{definition}
+Unit is defined as a number that divides 1. In particular, the units in $\mathbb{Z}[i]$ is 1, -1, i, -i.
+\end{definition}
 
 \begin{definition}
 For $a,b \in \mathbb{Z}[i]$, we write $a \sim b$, if $a$ equals $b$ times a unit.
 \end{definition}
+
 \begin{definition}
 A prime $p$ in $\mathbb{Z}[i]$ is a non unit element such that $d\mid p$ implies $d$ is a unit or $d \sim p$.
 \end{definition}
 From the definition we immediately have for any two primes $p_1$ and $p_2$, $p_1 \mid p_2$ implies $p_1 \sim p_2$.
+
+\begin{definition}
+For $a,b \in \mathbb{Z}[i]$, the great common divisor $d$ of $a, b$ is defined as follows:
+for all x : $\mathbb{Z}[i]$, if $(x | a)$ and $(x | b)$ , $(x | d)$ holds. (d is also in $\mathbb{Z}[i]$.)
+\end{definition}
+
 \begin{theorem}[Division Algorithm]
-For all $a,b \in \mathbb{Z}[i]$ with $b \not = 0$, there exist Gaussian integers $q$ and $r$ such that $a = qb+r$, where $\vert r \vert < \vert b \vert.$
+For all $a,b \in \mathbb{Z}[i]$ with $b \not = 0 + 0i$, there exist $q$,$r$: $\mathbb{Z}[i]$  such that $a = qb+r$, where $\vert r \vert < \vert b \vert.$
 \end{theorem}
 
 \begin{proof}
-Since $b \not = 0$, there exists $q' \in \mathbb{C}$ such that $a = q'b$. If we round $\operatorname{Re}(q')$ and $\operatorname{Im}(q')$ to their nearst integers (not necessary unique), we get $q \in \mathbb{Z}[i]$. Then we have 
+Since $b \not = 0$, there exists $q'$ in  $\mathbb{C}$ such that $a = q'b$. If we round $\operatorname{Re}(q')$ and $\operatorname{Im}(q')$ to their nearst integers (not necessary unique), we get $q \in \mathbb{Z}[i]$. Then we have 
 $$\vert r \vert = \vert a - qb \vert  = \vert q - q' \vert \vert b \vert \leq \vert \frac{1}{2}+\frac{1}{2}i\vert\vert b\vert = \frac{1}{2}\vert b \vert < \vert b \vert.$$
 \end{proof}
 
@@ -63,6 +81,20 @@ Let $S=\{ax+by\mid x,y\in \mathbb{Z}[i]\}$. Suppose $m$ is an element in $S$ wit
 \end{proof}
 
 Now with Theorem 1.2 we immediately have the Gaussian integer version of A5P2.
+
+\begin{theorem}
+$p$ is prime in $\mathbb{Z}[i]$ if and only if $|p|^2$ is prime in $\mathbb{N}$.
+\end{theorem}
+
+\begin{proof}
+Notice that for $a,b \in \mathbb{Z}[i]$, if $c = a*b$, we have $|c|= |a| * |b|$. 
+Let $c= c_x + c_yi$, $a= a_x + a_yi$, $b= b_x + b_yi$.
+Therefore $\sqrt{c_x^2 + c_y^2}= \sqrt{a_x^2 + a_y^2}*\sqrt{b_x^2 + b_y^2}$. Therefore $c_x^2 + c_y^2= (a_x^2 + a_y^2)*(b_x^2 + b_y^2)$.By the above equality, we can easily get that if $|p|^2$ is prime in $\mathbb{N}$, $p$ is also prime in 
+$\mathbb{Z}[i]$.
+\end{proof}
+When $p$ is prime in $\mathbb{Z}[i]$, the conjugate of $p$ is also prime. Therefore $p$ and its conjugate are the only two factors of their multiplication, which is 
+$(p_x^2 + p_y^2)$. Therefore $(p_x^2 + p_y^2)$ is prime in $\mathbb{N}$.
+
 \begin{theorem}
 If $a, b$ are coprime Gaussian integers, then for any $c \in \mathbb{Z}[i]$, $a\mid b\cdot c$ implies $a\mid c$.
 \end{theorem}
