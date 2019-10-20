@@ -160,17 +160,54 @@ x^2=13 \Rightarrow x = 8 \text{ or } 9, \\
 \end{gather}
 
 Now we generalize the method to $Z^*_p.$
-\begin{theorem}
-The multiplicative group of the perfect squares in $Z^*_p$ is cyclic.
+
+ \begin{theorem}
+$Z^*_p$ is a cyclic group. 
+(Exists a in $Z^*_p$ satisfies that $a^n \not \equiv 1$(mod p) for all natural number $n$ \textless $p-1$.)
 \end{theorem}
 
 \begin{proof}
 Let's prove some lemmas first.
  \end{proof}
+
+\begin{proof}
+Let's prove some lemmas first.
+ \end{proof}
  
-\begin{lemma}
-The perfect squares in $Z^*_p.$ is a multiplicative group.
+  \begin{lemma}
+ $a^n  \equiv 1$(mod p) has only one solution when $n$ is an odd number. 
 \end{lemma}
+
+\begin{lemma}
+ $a^n  \equiv 1$(mod p) has exactly $2^k$ number of solutions. ($n = 2^k *l$). Note that $l$ is an odd number. Also, for every $n$ that could be expressed in this way, if they have the same number
+ of 2 factors, their solutions are exactly the same. 
+ \end{lemma}
+
+\begin{proof}
+Let's now prove that exists $a$ in $Z^*_p$ satisfies that $a^n \not \equiv 1$(mod p) for all natural number $n$ \textless $p-1$.
+Let's find all the solutions of  $a^n  \equiv 1$(mod p) when $0$\textless n \textless (p-1).  If the number of solutions is smaller than $p-1$, there must exists $a$ that satisfies $a^n \not \equiv 1$(mod p) for all natural number $n$ \textless $p-1$. 
+If we write down all the equations, they look like this:
+ $a^1  \equiv 1$(mod p) , $a^2  \equiv 1$(mod p) , $a^3  \equiv 1$(mod p) , $a^4  \equiv 1$(mod p) , $a^5  \equiv 1$(mod p) ...$a^(p-2)  \equiv 1$(mod p) .
+ Categorize these equations by the number of 2 factors of n.
+ { $a^1  \equiv 1$(mod p) , $a^3  \equiv 1$(mod p) , $a^5  \equiv 1$(mod p) , $a^7  \equiv 1$(mod p) , $a^9  \equiv 1$(mod p) ...$a^(p-2)  \equiv 1$(mod p) .}
+ { $a^2  \equiv 1$(mod p) , $a^6  \equiv 1$(mod p) , $a^10  \equiv 1$(mod p) , $a^12  \equiv 1$(mod p) ...}
+ {$a^4  \equiv 1$(mod p) , $a^12  \equiv 1$(mod p) , $a^20  \equiv 1$(mod p) , $a^24  \equiv 1$(mod p) ...}
+ {$a^8  \equiv 1$(mod p) , $a^24  \equiv 1$(mod p) , $a^40  \equiv 1$(mod p) , $a^48  \equiv 1$(mod p) ...}
+ ...
+ ...
+ The equations belong to the same category should have the same solutions.
+ Therefore, add the solutions of each category together and minus the repetitive ones will give us all the solutions.
+ The solutions of one category always contains solutions from the last category.
+ Therefore we only need to calculate the number of solutions of the very last category.
+ By lemma, we know that the last category has $\floor (log_2 n)$ number of solutions. 
+ Such number is smaller than $(p-1)$, which is the number of elements in  $Z^*_p$. 
+ \end{proof}
+
+
+ 
+\begin{theorem}
+The perfect squares in $Z^*_p.$ is a multiplicative group.
+\end{theorem}
 
 \begin{proof}
 A multiplicative group must have the following properties.
@@ -184,16 +221,12 @@ for all a, b \in $Z^*_p$, if $a$ and $b$ are not additive inverses, and $a$ \not
 The multiplicative group of the perfect squares in $Z^*_p$ has exactly $(p-1)/2$ elements.
 \end{lemma}
 
- \begin{lemma}
-exists a in $Z^*_p$, such that $a^n + 1 \not \equiv 0$ for all natural number n smaller than $(p-3)/2$. And a also satisfies that $a^0, a^1, a^2...a^\frac{p-1}{2}$ are distinct.
-\end{lemma}
-
 \begin{proof}
-according to Lemma 2.7, there exists a in $Z^*_p$, such that $a^n + 1 \not \equiv 0$ for all natural number n smaller than $(p-3)/2$. And a also satisfies that $a^0, a^1, a^2...a^\frac{p-1}{2}$ are distinct.
+according to Lemma 2.7, there exists a in $Z^*_p$, such that $a^n + 1 \not \equiv 0$ for all non-zero integer n smaller than $(p-1)/2$. And a also satisfies that $a^0, a^1, a^2...a^\frac{p-3}{2}$ are distinct.
 
 Therefore we have a list of numbers
-$(a^0)^2, (a^1)^2, (a^2)^2...(a^\frac{p-1}{2})^2$ 
-As $a^0, a^1, a^2...a^\frac{p-1}{2}$ are distinct, and none of them are additive inverses. $(a^0)^2, (a^1)^2, (a^2)^2...(a^\frac{p-1}{2})^2$ are also distinct.
+$(a^0)^2,(a^1)^2, (a^2)^2...(a^\frac{p-1}{2})^2$ 
+As $a^0, a^1, a^2...a^\frac{p-3}{2}$ are distinct, and none of them are additive inverses. $(a^0)^2, (a^1)^2, (a^2)^2...(a^\frac{p-3}{2})^2$ are also distinct.
 
 They are in the group of perfect squares.
 and the group of perfect squares only has
